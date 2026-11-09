@@ -8,25 +8,16 @@ class Bloque1Secuenciales{
         }
         static void R1_Ejercicio1()
         {
-            const double PRECIO_HAMBURGUESA = 4.50;
-            const double PRECIO_PAPAS = 2.75;
-            const double PRECIO_BEBIDA = 1.20;
+            Console.Write("Introduce un número: ");
+            double num = double.Parse(Console.ReadLine()!);
+            double auxiliar = 10; 
 
-            Console.Write("Cantidad de hamburguesas: ");
-            int hamburguesas = int.Parse(Console.ReadLine()!);
-
-            Console.Write("Cantidad de papas: ");
-            int papas = int.Parse(Console.ReadLine()!);
-
-            Console.Write("Cantidad de bebidas: ");
-            int bebidas = int.Parse(Console.ReadLine()!);
-
-            double total = (hamburguesas * PRECIO_HAMBURGUESA) + 
-                           (papas * PRECIO_PAPAS) + 
-                           (bebidas * PRECIO_BEBIDA);
-
-            Console.WriteLine($"Cantidad a pagar: {total:F2}€");
-
-           //Console.ReadKey();
+            Console.WriteLine($"Valor absoluto: {Math.Abs(num)}");
+            Console.WriteLine($"Potencia al cubo: {Math.Pow(num, 3)}");
+            Console.WriteLine($"Raíz cuadrada: {Math.Sqrt(Math.Abs(num))}");
+            Console.WriteLine($"Seno: {Math.Sin(num)}");
+            Console.WriteLine($"Coseno: {Math.Cos(num)}");
+            Console.WriteLine($"Número máximo (entre {num} y {auxiliar}): {Math.Max(num, auxiliar)}");
+            Console.WriteLine($"Número mínimo (entre {num} y {auxiliar}): {Math.Min(num, auxiliar)}");
         }
 }

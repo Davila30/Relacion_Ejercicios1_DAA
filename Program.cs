@@ -8,15 +8,25 @@ class Bloque1Secuenciales{
         }
         static void R1_Ejercicio1()
         {
-            Console.Write("Introduce el primer número: ");
-            int n1 = int.Parse(Console.ReadLine()!);
-            Console.Write("Introduce el segundo número: ");
-            int n2 = int.Parse(Console.ReadLine()!);
+            const double PRECIO_HAMBURGUESA = 4.50;
+            const double PRECIO_PAPAS = 2.75;
+            const double PRECIO_BEBIDA = 1.20;
 
-            Console.WriteLine($"La suma es {n1 + n2}");
-            Console.WriteLine($"La resta es: {n1 - n2}");
-            Console.WriteLine($"La multiplicación es: {n1 * n2}");
-            Console.WriteLine($"La división es: {n1 / n2}");
-            Console.WriteLine($"El módulo es: {n1 % n2}");
+            Console.Write("Cantidad de hamburguesas: ");
+            int hamburguesas = int.Parse(Console.ReadLine()!);
+
+            Console.Write("Cantidad de papas: ");
+            int papas = int.Parse(Console.ReadLine()!);
+
+            Console.Write("Cantidad de bebidas: ");
+            int bebidas = int.Parse(Console.ReadLine()!);
+
+            double total = (hamburguesas * PRECIO_HAMBURGUESA) + 
+                           (papas * PRECIO_PAPAS) + 
+                           (bebidas * PRECIO_BEBIDA);
+
+            Console.WriteLine($"Cantidad a pagar: {total:F2}€");
+
+           //Console.ReadKey();
         }
 }

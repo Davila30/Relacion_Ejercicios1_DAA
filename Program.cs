@@ -8,16 +8,23 @@ class Bloque1Secuenciales{
         }
         static void R1_Ejercicio1()
         {
-            Console.Write("Número 1: ");
-            double n1 = double.Parse(Console.ReadLine()!);
-            Console.Write("Número 2: ");
-            double n2 = double.Parse(Console.ReadLine()!);
-            Console.Write("Número 3: ");
-            double n3 = double.Parse(Console.ReadLine()!);
-            Console.Write("Número 4: ");
-            double n4 = double.Parse(Console.ReadLine()!);
+            Console.Write("Introduce el primer valor: ");
+            double v1 = double.Parse(Console.ReadLine()!);
 
-            Console.WriteLine($"Suma de los dos primeros: {n1 + n2}");
-            Console.WriteLine($"Producto del tercero y cuarto: {n3 * n4}");
+            Console.Write("Introduce el segundo valor: ");
+            double v2 = double.Parse(Console.ReadLine()!);
+
+            Console.Write("Introduce el tercer valor: ");
+            double v3 = double.Parse(Console.ReadLine()!);
+
+            Console.Write("Introduce el cuarto valor: ");
+            double v4 = double.Parse(Console.ReadLine()!);
+
+            double suma = v1 + v2 + v3 + v4;
+            double promedio = suma / 4;
+
+            Console.WriteLine($"Suma: {suma}");
+            Console.WriteLine($"Promedio: {promedio}");
         }
+
 }

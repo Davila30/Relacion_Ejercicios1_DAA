@@ -5,17 +5,15 @@ delegate int Operacion(int a, int b);
 
 class EjerciciosDelegados
 {
-    static int Resta(int a, int b) => a - b;
+    static int Sumar(int a, int b) => a + b;
+    static int Restar(int a, int b) => a - b;
 
-    static void Ejercicio1()
+    static void Main(string[] args)
     {
-        Operacion op = Resta;
-        int resultado = op(10, 5);
-        Console.WriteLine($"La resta de 10 y 5 es = {resultado}");
-    }
+        Operacion op = Sumar;
+        Console.WriteLine($"Suma: {op(10, 5)}");
 
-    static void Main()
-    {
-        Ejercicio1();
+        Operacion op2 = Restar;
+        Console.WriteLine($"Resta: {op2(10, 5)}");
     }
 }

@@ -1,18 +1,21 @@
 ﻿using System;
 using System.Collections;
 
-class Bloque1Secuenciales{
-        static void Main(string[] args)
-        {
-            R1_Ejercicio1();
-        }
-        static void R1_Ejercicio1()
-        {
-            Console.Write("Introduce una dirección web o texto: ");
-            string texto = Console.ReadLine()!;
+delegate int Operacion(int a, int b);
 
-            bool resultado = texto.StartsWith("www", StringComparison.OrdinalIgnoreCase);
-            Console.WriteLine(resultado);
-        }
+class EjerciciosDelegados
+{
+    static int Sumar(int a, int b) => a + b;
 
+    static void Ejercicio1()
+    {
+        Operacion op = Sumar;
+        int resultado = op(10, 5);
+        Console.WriteLine($"Ejercicio 1 - Suma (10 + 5): {resultado}");
+    }
+
+    static void Main()
+    {
+        Ejercicio1();
+    }
 }

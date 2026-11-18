@@ -7,13 +7,19 @@ class EjerciciosDelegados
 {
     static int Sumar(int a, int b) => a + b;
     static int Restar(int a, int b) => a - b;
+    static int Multiplicar(int a, int b) => a * b;
+
 
     static void Main(string[] args)
     {
+        // Ejercicio 3: Multicast Delegates
         Operacion op = Sumar;
-        Console.WriteLine($"Suma: {op(10, 5)}");
+        op += Restar;
+        op += Multiplicar;
 
-        Operacion op2 = Restar;
-        Console.WriteLine($"Resta: {op2(10, 5)}");
+        foreach (Operacion metodo in op.GetInvocationList())
+        {
+            Console.WriteLine($"Resultado: {metodo(10, 5)}");
+        }
     }
 }

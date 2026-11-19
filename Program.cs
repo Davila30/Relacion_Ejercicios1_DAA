@@ -3,6 +3,7 @@ using System.Collections;
 
 delegate int Operacion(int a, int b);
 delegate int Operar(int a, int b);
+delegate int OperarArray(int[] numeros);
 
 class EjerciciosDelegados
 {
@@ -30,6 +31,22 @@ class EjerciciosDelegados
     static int Suma(int a, int b) => a + b;
     static int Resta(int a, int b) => a - b;
     static int Multiplicacion(int a, int b) => a * b;
+
+    // Métodos del Ejercicio 7
+    static int SumaArray(int[] numeros)
+    {
+        int total = 0;
+        foreach (int n in numeros) total += n;
+        return total;
+    }
+
+    static int MultiplicarArray(int[] numeros)
+    {
+        if (numeros.Length == 0) return 0;
+        int total = 1;
+        foreach (int n in numeros) total *= n;
+        return total;
+    }
 
     static void Main(string[] args)
     {
@@ -60,6 +77,17 @@ class EjerciciosDelegados
         foreach (Operar metodo in operar.GetInvocationList())
         {
             Console.WriteLine($"Método: {metodo.Method.Name} -> Resultado: {metodo(6, 3)}");
+        }
+
+        // Ejercicio 7: Delegados y Arrays
+        Console.WriteLine("\n=== EJERCICIO 7 ===");
+        int[] datos = { 2, 3, 4 };
+        OperarArray opArray = SumaArray;
+        opArray += MultiplicarArray;
+
+        foreach (OperarArray metodo in opArray.GetInvocationList())
+        {
+            Console.WriteLine($"Método: {metodo.Method.Name} -> Resultado: {metodo(datos)}");
         }
     }
 }

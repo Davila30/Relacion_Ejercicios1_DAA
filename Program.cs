@@ -6,6 +6,7 @@ delegate int Operar(int a, int b);
 delegate int OperarArray(int[] numeros);
 delegate int Transformar(int n);
 delegate int OperacionCallback(int a, int b);
+delegate double Calculo(double n);
 
 class EjerciciosDelegados
 {
@@ -59,6 +60,34 @@ class EjerciciosDelegados
     static int EjecutarOperacion(OperacionCallback callback, int a, int b)
     {
         return callback(a, b);
+    }
+
+    // Métodos del Ejercicio 10
+    static double RaizCuadrada(double n)
+    {
+        if (n < 0)
+            throw new ArgumentException("No se puede calcular la raíz cuadrada de un número negativo.");
+        return Math.Sqrt(n);
+    }
+
+    static double Logaritmo(double n)
+    {
+        if (n <= 0)
+            throw new ArgumentException("El logaritmo solo está definido para números mayores que cero.");
+        return Math.Log(n);
+    }
+
+    static void CalcularSeguro(Calculo calc, double numero)
+    {
+        try
+        {
+            double resultado = calc(numero);
+            Console.WriteLine($"{calc.Method.Name}({numero}) = {resultado:F4}");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error en {calc.Method.Name}({numero}): {ex.Message}");
+        }
     }
 
     static void Main(string[] args)
@@ -120,5 +149,12 @@ class EjerciciosDelegados
         Console.WriteLine($"Callback Suma (7, 2): {EjecutarOperacion(Suma, 7, 2)}");
         Console.WriteLine($"Callback Resta (7, 2): {EjecutarOperacion(Resta, 7, 2)}");
         Console.WriteLine($"Callback Multiplicar (7, 2): {EjecutarOperacion(Multiplicar, 7, 2)}");
+
+        // Ejercicio 10: Delegados y Manejo de Errores
+        Console.WriteLine("\n=== EJERCICIO 10 ===");
+        CalcularSeguro(RaizCuadrada, 25);
+        CalcularSeguro(RaizCuadrada, -9);
+        CalcularSeguro(Logaritmo, 10);
+        CalcularSeguro(Logaritmo, 0);
     }
 }

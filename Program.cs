@@ -4,6 +4,7 @@ using System.Collections;
 delegate int Operacion(int a, int b);
 delegate int Operar(int a, int b);
 delegate int OperarArray(int[] numeros);
+delegate int Transformar(int n);
 
 class EjerciciosDelegados
 {
@@ -48,6 +49,11 @@ class EjerciciosDelegados
         return total;
     }
 
+    // Métodos del Ejercicio 8
+    static int Doblar(int n) => n * 2;
+    static int Triplicar(int n) => n * 3;
+    static int Cuadrado(int n) => n * n;
+
     static void Main(string[] args)
     {
         // Ejercicio 4: Delegados con Diferentes Métodos
@@ -88,6 +94,18 @@ class EjerciciosDelegados
         foreach (OperarArray metodo in opArray.GetInvocationList())
         {
             Console.WriteLine($"Método: {metodo.Method.Name} -> Resultado: {metodo(datos)}");
+        }
+
+        // Ejercicio 8: Delegados y Retornos Condicionales
+        Console.WriteLine("\n=== EJERCICIO 8 ===");
+        int numero = 5;
+        Transformar trans = Doblar;
+        trans += Triplicar;
+        trans += Cuadrado;
+
+        foreach (Transformar metodo in trans.GetInvocationList())
+        {
+            Console.WriteLine($"{metodo.Method.Name}({numero}) = {metodo(numero)}");
         }
     }
 }

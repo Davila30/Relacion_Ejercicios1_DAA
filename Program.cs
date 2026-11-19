@@ -18,9 +18,17 @@ class EjerciciosDelegados
         return a / b;
     }
 
+    // Método del Ejercicio 5
+    static void EjecutarYMostrar(Operacion op, int x, int y)
+    {
+        int resultado = op(x, y);
+        Console.WriteLine($"Operación {op.Method.Name}({x}, {y}) = {resultado}");
+    }
+
     static void Main(string[] args)
     {
-        // Ejercicio 3: Multicast Delegates
+        // Ejercicio 4: Delegados con Diferentes Métodos
+        Console.WriteLine("=== EJERCICIO 4 ===");
         Operacion op = Sumar;
         op += Restar;
         op += Multiplicar;
@@ -30,5 +38,11 @@ class EjerciciosDelegados
         {
             Console.WriteLine($"Resultado ({metodo.Method.Name}): {metodo(10, 0)}");
         }
+
+        // Ejercicio 5: Delegados y Retornos
+        Console.WriteLine("\n=== EJERCICIO 5 ===");
+        EjecutarYMostrar(Sumar, 8, 4);
+        EjecutarYMostrar(Restar, 8, 4);
+        EjecutarYMostrar(Multiplicar, 8, 4);
     }
 }

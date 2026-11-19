@@ -5,6 +5,7 @@ delegate int Operacion(int a, int b);
 delegate int Operar(int a, int b);
 delegate int OperarArray(int[] numeros);
 delegate int Transformar(int n);
+delegate int OperacionCallback(int a, int b);
 
 class EjerciciosDelegados
 {
@@ -53,6 +54,12 @@ class EjerciciosDelegados
     static int Doblar(int n) => n * 2;
     static int Triplicar(int n) => n * 3;
     static int Cuadrado(int n) => n * n;
+
+    // Método del Ejercicio 9
+    static int EjecutarOperacion(OperacionCallback callback, int a, int b)
+    {
+        return callback(a, b);
+    }
 
     static void Main(string[] args)
     {
@@ -107,5 +114,11 @@ class EjerciciosDelegados
         {
             Console.WriteLine($"{metodo.Method.Name}({numero}) = {metodo(numero)}");
         }
+
+        // Ejercicio 9: Delegados y Funciones de Callback
+        Console.WriteLine("\n=== EJERCICIO 9 ===");
+        Console.WriteLine($"Callback Suma (7, 2): {EjecutarOperacion(Suma, 7, 2)}");
+        Console.WriteLine($"Callback Resta (7, 2): {EjecutarOperacion(Resta, 7, 2)}");
+        Console.WriteLine($"Callback Multiplicar (7, 2): {EjecutarOperacion(Multiplicar, 7, 2)}");
     }
 }

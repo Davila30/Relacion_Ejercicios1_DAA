@@ -2,6 +2,7 @@
 using System.Collections;
 
 delegate int Operacion(int a, int b);
+delegate int Operar(int a, int b);
 
 class EjerciciosDelegados
 {
@@ -25,6 +26,11 @@ class EjerciciosDelegados
         Console.WriteLine($"Operación {op.Method.Name}({x}, {y}) = {resultado}");
     }
 
+    // Métodos del Ejercicio 6
+    static int Suma(int a, int b) => a + b;
+    static int Resta(int a, int b) => a - b;
+    static int Multiplicacion(int a, int b) => a * b;
+
     static void Main(string[] args)
     {
         // Ejercicio 4: Delegados con Diferentes Métodos
@@ -44,5 +50,16 @@ class EjerciciosDelegados
         EjecutarYMostrar(Sumar, 8, 4);
         EjecutarYMostrar(Restar, 8, 4);
         EjecutarYMostrar(Multiplicar, 8, 4);
+
+        // Ejercicio 6: Delegados y Nombres
+        Console.WriteLine("\n=== EJERCICIO 6 ===");
+        Operar operar = Suma;
+        operar += Resta;
+        operar += Multiplicacion;
+
+        foreach (Operar metodo in operar.GetInvocationList())
+        {
+            Console.WriteLine($"Método: {metodo.Method.Name} -> Resultado: {metodo(6, 3)}");
+        }
     }
 }
